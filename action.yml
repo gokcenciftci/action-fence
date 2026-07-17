@@ -1,0 +1,21 @@
+name: 'action-fence'
+description: 'A deterministic, local-first GitHub Actions security and compliance gate for CI.'
+author: 'Gökçen Çiftci'
+branding:
+  icon: 'shield'
+  color: 'blue'
+inputs:
+  paths:
+    description: 'Space-separated paths to check (files or directories).'
+    required: false
+    default: '.github/workflows'
+  rules:
+    description: 'Comma-separated list of rules to run (pin-actions, workflow-permissions, command-injection, timeout-minutes).'
+    required: false
+  format:
+    description: 'Output format: text or json.'
+    required: false
+    default: 'text'
+runs:
+  using: 'node20'
+  main: 'dist/cli.js'

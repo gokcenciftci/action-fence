@@ -1,0 +1,19 @@
+name: Insecure CI
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Violation: Mutable tag
+
+      - name: Print PR Title
+        run: |
+          echo "Title of PR is: ${{ github.event.pull_request.title }}" # Violation: Command injection
+
+      - name: Print head ref
+        run: echo "Head ref is ${{ github.head_ref }}" # Violation: Command injection

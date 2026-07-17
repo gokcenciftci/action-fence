@@ -1,0 +1,19 @@
+name: Secure CI
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@b4ffde55f3e902f1ec10476a2186e4099512b520 # Pass: Pinned SHA
+
+      - name: Print Info
+        run: echo "Standard build job"
